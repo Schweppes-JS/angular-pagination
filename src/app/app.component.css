@@ -1,0 +1,25 @@
+.card-container {
+  padding: 0 15px;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
+  overflow-y: auto;
+}
+
+.app-card {
+  min-width: 350px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  opacity: .95;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}

@@ -1,0 +1,49 @@
+.square {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 400px;
+  width: 350px;
+  background-color: #2A4D6E;
+}
+
+.square::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 400px;
+  border-left: 3px dashed rgb(104, 76, 76);
+  border-right: 3px dashed rgb(104, 76, 76);
+}
+
+.square::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  border-left: 3px dashed rgb(104, 76, 76);
+  border-right: 3px dashed rgb(104, 76, 76);
+}
+
+.triangle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 135px;
+  left: 50%;
+  height: 248px;
+  width: 248px;
+  background-color: #2A4D6E;
+  transform: rotate(135deg) skew(20deg, 20deg);
+  transform-origin: bottom left;
+  z-index: -1;
+}
+
+.triangle::after {
+  content: "";
+  height: 218px;
+  width: 218px;
+  border-top: 4px dashed rgb(104, 76, 76);
+  border-right: 4px dashed rgb(104, 76, 76);
+}
