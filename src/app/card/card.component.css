@@ -1,10 +1,14 @@
 .square {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   position: relative;
   height: 400px;
   width: 350px;
-  background-color: #2A4D6E;
+  background-color: #2a426e;
+  color: rgba(241, 223, 163, 0.966);
+  border-radius: 10px;
 }
 
 .square::before {
@@ -25,6 +29,13 @@
   border-right: 3px dashed rgb(104, 76, 76);
 }
 
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px rgba(61, 37, 9, .733);
+}
+
 .triangle {
   position: absolute;
   display: flex;
@@ -34,10 +45,12 @@
   left: 50%;
   height: 248px;
   width: 248px;
-  background-color: #2A4D6E;
+  background-color: #2a426e;
   transform: rotate(135deg) skew(20deg, 20deg);
   transform-origin: bottom left;
   z-index: -1;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .6);
 }
 
 .triangle::after {
@@ -46,4 +59,5 @@
   width: 218px;
   border-top: 4px dashed rgb(104, 76, 76);
   border-right: 4px dashed rgb(104, 76, 76);
+  box-shadow: 0 0 0;
 }

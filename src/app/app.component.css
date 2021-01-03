@@ -10,12 +10,13 @@
 }
 
 .app-card {
+  position: relative;
   min-width: 350px;
   height: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
-  opacity: .95;
+  opacity: .98;
 }
 
 .button-container {
