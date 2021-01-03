@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
+import { LoaderService } from './services/loader.service';
 import { User } from './models/User';
+import { Page } from './models/Page';
+import { Subject, Subscription } from 'rxjs';
+import { delay, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +12,36 @@ import { User } from './models/User';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnDestroy, OnInit {
+  loader: Subject<boolean> = this.loaderService.loader;
+  isLoaded: boolean = false;
   userData: User[] = [];
-  isLoading: boolean = false;
-  cardsAmount: number = 2;
+  totalPages: number[];
+  private subscription: Subscription = new Subscription();
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private loaderService: LoaderService) { }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((users: User[]) => {
-      this.userData = users;
-      this.isLoading = true;
-    })
+    this.loader.subscribe((value) => this.isLoaded = value);
+    this.sendingRequest();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  sendingRequest() {
+    this.subscription.add(this.userService.getUsers().subscribe((users: Page) => {
+      this.totalPages = Array(users.total / parseInt(users.per_page)).fill('').map((x, i) => i + 1);
+      this.userData = users.data;
+
+      console.log(this.isLoaded)
+    }));
+  }
+
+  loadNextPage(pageNumber: number) {
+    console.log(this.isLoaded)
+    this.userService.changingPage(pageNumber);
+    this.sendingRequest();
   }
 }

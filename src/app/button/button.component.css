@@ -1,7 +1,12 @@
-.button {
+.page-number {
+  margin: 0;
   color: rgba(241, 198, 163, .589);
   font-weight: 900;
   font-size: 3rem;
+}
+
+.button {
+  cursor: pointer;
   position: relative;
   height: 90px;
   width: 90px;

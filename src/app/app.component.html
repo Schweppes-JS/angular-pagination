@@ -1,11 +1,18 @@
-<div class="card-container" *ngIf="isLoading">
-  <app-card *ngFor="let user of userData" class="app-card" [user]="user"></app-card>
+<div class="loader" *ngIf="!isLoaded">
+  <img src="./loader.svg" alt="loading">
 </div>
-<div class="button-container">
-  <app-button></app-button>
-  <app-button></app-button>
-  <app-button></app-button>
-  <app-button></app-button>
-  <app-button></app-button>
-  <app-button></app-button>
+<div class="card-container" *ngIf="isLoaded">
+  <app-card
+  *ngFor="let user of userData"
+  class="app-card"
+  [user]="user"
+  ></app-card>
+</div>
+<div class="button-container" *ngIf="isLoaded">
+  <app-button
+    class="button"
+    *ngFor="let pageNumber of totalPages"
+    [pageNumber]="pageNumber"
+    (click)="loadNextPage(pageNumber)"
+  ></app-button>
 </div>

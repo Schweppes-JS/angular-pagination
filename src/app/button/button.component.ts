@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-button',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
-  constructor() { }
+  @Input() pageNumber: number;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }

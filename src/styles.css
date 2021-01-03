@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@0;1&display=swap');
 
 * {
   box-sizing: border-box;
@@ -9,14 +9,13 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  padding: 15px;
   height: 100vh;
-  font-family: 'Raleway', sans-serif;
+  padding: 15px;
+  font-family: 'Ubuntu', sans-serif;
   background-image: url(./assets/background.svg);
   background-position: center center;
 }
 
 .app-container {
-  height: 80vh;
   width: 95vw;
 }
