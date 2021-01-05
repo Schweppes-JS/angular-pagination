@@ -1,3 +1,11 @@
+## Demo
+
+![print](./demo/demo.gif)
+
+# Live page
+
+https://schweppes-js.github.io/angular-pagination/dist/httpclient/index.html
+
 # Httpclient
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.

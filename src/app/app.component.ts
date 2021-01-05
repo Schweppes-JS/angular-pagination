@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
 import { LoaderService } from './services/loader.service';
-import { User } from './models/User';
-import { Page } from './models/Page';
+import { User } from './models/user.model';
+import { Page } from './models/page.model';
 import { Subject, Subscription } from 'rxjs';
-import { delay, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -30,18 +29,10 @@ export class AppComponent implements OnDestroy, OnInit {
     this.subscription.unsubscribe();
   }
 
-  sendingRequest() {
-    this.subscription.add(this.userService.getUsers().subscribe((users: Page) => {
+  sendingRequest(pageNumber: number = 1) {
+    this.subscription.add(this.userService.getUsers(pageNumber.toString()).subscribe((users: Page) => {
       this.totalPages = Array(users.total / parseInt(users.per_page)).fill('').map((x, i) => i + 1);
       this.userData = users.data;
-
-      console.log(this.isLoaded)
     }));
-  }
-
-  loadNextPage(pageNumber: number) {
-    console.log(this.isLoaded)
-    this.userService.changingPage(pageNumber);
-    this.sendingRequest();
   }
 }
